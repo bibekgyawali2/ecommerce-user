@@ -1,6 +1,7 @@
 import 'package:ecommerceuser/home.dart';
-import 'package:ecommerceuser/screens/cart.dart';
 import 'package:flutter/material.dart';
+
+import 'cart.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});

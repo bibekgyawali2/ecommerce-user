@@ -1,6 +1,6 @@
 import 'package:ecommerceuser/cubits/order_cubit/order_cubit_cubit.dart';
 import 'package:ecommerceuser/cubits/products_cubit/products_cubit.dart';
-import 'package:ecommerceuser/screens/bottomnavbar.dart';
+import 'package:ecommerceuser/screens/order.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +20,9 @@ void main() async {
         BlocProvider(
           create: (context) => OrderCubitCubit(),
         ),
+        BlocProvider(
+          create: (context) => OrderCubitCubit()..getCart(),
+        ),
       ],
       child: const MyApp(),
     ),
@@ -37,7 +40,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      home: const OrderPage(),
     );
   }
 }

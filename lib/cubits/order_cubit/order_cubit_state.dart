@@ -8,3 +8,12 @@ class OrderCubitInitial extends OrderCubitState {}
 class OrderCubitLoading extends OrderCubitState {}
 
 class OrderCubitSuccess extends OrderCubitState {}
+
+class OrderFetched extends OrderCubitState {
+  final List<OrderModal> orderList;
+
+  OrderFetched(this.orderList);
+
+  @override
+  List<Object?> get props => [orderList];
+}
