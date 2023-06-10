@@ -27,6 +27,9 @@ void main() async {
         BlocProvider(
           create: (context) => AddressCubit(),
         ),
+        BlocProvider(
+          create: (context) => AddressCubit()..getAddress(),
+        ),
       ],
       child: const MyApp(),
     ),
