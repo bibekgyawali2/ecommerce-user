@@ -1,9 +1,9 @@
-import 'package:ecommerceuser/cubits/order_cubit/order_cubit_cubit.dart';
 import 'package:ecommerceuser/cubits/products_cubit/products_cubit.dart';
-import 'package:ecommerceuser/screens/order.dart';
+import 'package:ecommerceuser/screens/bottomnavbar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'cubits/cart_cubit/order_cubit_cubit.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -37,10 +37,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData.dark(
+      theme: ThemeData.light(
         useMaterial3: true,
       ),
-      home: const OrderPage(),
+      home: const MyHomePage(),
     );
   }
 }

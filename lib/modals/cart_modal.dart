@@ -5,15 +5,16 @@ class OrderModal {
   String? sellername;
   String? title;
   String? tprice;
+  String? cartId;
 
-  OrderModal({
-    this.added_by,
-    this.img,
-    this.qty,
-    this.sellername,
-    this.title,
-    this.tprice,
-  });
+  OrderModal(
+      {this.added_by,
+      this.img,
+      this.qty,
+      this.sellername,
+      this.title,
+      this.tprice,
+      this.cartId});
 
   OrderModal.fromJson(Map<String, dynamic> json);
 
@@ -25,6 +26,7 @@ class OrderModal {
     data["sellername"] = sellername;
     data["title"] = title;
     data["tprice"] = tprice;
+    data['orderId'] = cartId;
     return data;
   }
 }

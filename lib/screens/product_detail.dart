@@ -1,7 +1,8 @@
-import 'package:ecommerceuser/cubits/order_cubit/order_cubit_cubit.dart';
 import 'package:ecommerceuser/modals/products_modals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../cubits/cart_cubit/order_cubit_cubit.dart';
 
 class ProductDetail extends StatefulWidget {
   final Product product;

@@ -9,6 +9,8 @@ class OrderCubitLoading extends OrderCubitState {}
 
 class OrderCubitSuccess extends OrderCubitState {}
 
+class OrderCubitFailure extends OrderCubitState {}
+
 class OrderFetched extends OrderCubitState {
   final List<OrderModal> orderList;
 

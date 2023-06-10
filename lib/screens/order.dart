@@ -25,16 +25,35 @@ class _OrderPageState extends State<OrderPage> {
               Card(
                 elevation: 50,
                 child: Container(
-                  margin: const EdgeInsets.all(14),
+                  margin: const EdgeInsets.all(12),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        height: 140,
-                        width: 120,
+                        height: 100,
+                        width: 100,
                         decoration: BoxDecoration(
                             color: Colors.red,
                             borderRadius: BorderRadius.circular(10)),
-                      )
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            "Product title",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Text("Product Subtitle")
+                        ],
+                      ),
+                      const Spacer(),
+                      const Text('Status')
                     ],
                   ),
                 ),

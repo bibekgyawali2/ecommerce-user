@@ -1,6 +1,7 @@
-import 'package:ecommerceuser/cubits/order_cubit/order_cubit_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../cubits/cart_cubit/order_cubit_cubit.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -45,10 +46,13 @@ class _CartScreenState extends State<CartScreen> {
                                 child: Container(
                                   padding: const EdgeInsets.all(10),
                                   decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: NetworkImage(
+                                            state.orderList[index].img!)),
                                     color: const Color(0xFFF5F6F9),
                                     borderRadius: BorderRadius.circular(15),
                                   ),
-                                  child: Image.network(state.orderList[1].img!),
                                 ),
                               ),
                             ),
@@ -79,7 +83,36 @@ class _CartScreenState extends State<CartScreen> {
                                   ),
                                 )
                               ],
-                            )
+                            ),
+                            const Spacer(),
+                            IconButton(
+                              onPressed: () {
+                                try {
+                                  BlocProvider.of<OrderCubitCubit>(context)
+                                      .deleteCartItems(
+                                          state.orderList[index].cartId);
+
+                                  BlocProvider.of<OrderCubitCubit>(context)
+                                      .getCart();
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      behavior: SnackBarBehavior.floating,
+                                      content:
+                                          Text('Items Deleted Successfully'),
+                                    ),
+                                  );
+                                } catch (e) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      behavior: SnackBarBehavior.floating,
+                                      content: Text(
+                                          'Item Cannot be Deleted At the Moment'),
+                                    ),
+                                  );
+                                }
+                              },
+                              icon: const Icon(Icons.delete),
+                            ),
                           ],
                         );
                       },
