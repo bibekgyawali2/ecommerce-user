@@ -1,4 +1,4 @@
-class OrderModal {
+class CartModal {
   String? added_by;
   String? img;
   String? qty;
@@ -7,7 +7,7 @@ class OrderModal {
   String? tprice;
   String? cartId;
 
-  OrderModal(
+  CartModal(
       {this.added_by,
       this.img,
       this.qty,
@@ -16,7 +16,7 @@ class OrderModal {
       this.tprice,
       this.cartId});
 
-  OrderModal.fromJson(Map<String, dynamic> json);
+  CartModal.fromJson(Map<String, dynamic> json);
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};

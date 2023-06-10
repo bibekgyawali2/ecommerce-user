@@ -37,9 +37,9 @@ class OrderCubitCubit extends Cubit<OrderCubitState> {
           .where('added_by', isEqualTo: currentUser!.uid)
           .get();
       List<DocumentSnapshot> documents = snapshot.docs;
-      List<OrderModal> orderList = documents.map((DocumentSnapshot document) {
+      List<CartModal> cartList = documents.map((DocumentSnapshot document) {
         Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-        return OrderModal(
+        return CartModal(
           added_by: data['added_by'],
           img: data['img'],
           qty: data['qty'],
@@ -49,14 +49,14 @@ class OrderCubitCubit extends Cubit<OrderCubitState> {
           cartId: document.id,
         );
       }).toList();
-      emit(OrderFetched(orderList));
+      emit(OrderFetched(cartList));
     } catch (e) {
       emit(OrderCubitFailure());
     }
   }
 
   //delete cart items
-  void deleteCartItems(orderId) async {
-    await firestore.collection('Cart').doc(orderId).delete();
+  void deleteCartItems(cartId) async {
+    await firestore.collection('Cart').doc(cartId).delete();
   }
 }

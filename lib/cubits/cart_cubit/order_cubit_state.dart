@@ -12,10 +12,10 @@ class OrderCubitSuccess extends OrderCubitState {}
 class OrderCubitFailure extends OrderCubitState {}
 
 class OrderFetched extends OrderCubitState {
-  final List<OrderModal> orderList;
+  final List<CartModal> cartList;
 
-  OrderFetched(this.orderList);
+  OrderFetched(this.cartList);
 
   @override
-  List<Object?> get props => [orderList];
+  List<Object?> get props => [cartList];
 }

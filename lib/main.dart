@@ -1,3 +1,4 @@
+import 'package:ecommerceuser/cubits/address_cubit/address_cubit.dart';
 import 'package:ecommerceuser/cubits/products_cubit/products_cubit.dart';
 import 'package:ecommerceuser/screens/address.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,6 +23,9 @@ void main() async {
         ),
         BlocProvider(
           create: (context) => OrderCubitCubit()..getCart(),
+        ),
+        BlocProvider(
+          create: (context) => AddressCubit(),
         ),
       ],
       child: const MyApp(),

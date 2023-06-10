@@ -33,7 +33,7 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                     const SizedBox(height: 10),
                     ListView.builder(
-                      itemCount: state.orderList.length,
+                      itemCount: state.cartList.length,
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
@@ -49,7 +49,7 @@ class _CartScreenState extends State<CartScreen> {
                                     image: DecorationImage(
                                         fit: BoxFit.cover,
                                         image: NetworkImage(
-                                            state.orderList[index].img!)),
+                                            state.cartList[index].img!)),
                                     color: const Color(0xFFF5F6F9),
                                     borderRadius: BorderRadius.circular(15),
                                   ),
@@ -61,7 +61,7 @@ class _CartScreenState extends State<CartScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  '${state.orderList[index].title}',
+                                  '${state.cartList[index].title}',
                                   style: const TextStyle(fontSize: 16),
                                   maxLines: 2,
                                 ),
@@ -75,7 +75,7 @@ class _CartScreenState extends State<CartScreen> {
                                     children: [
                                       TextSpan(
                                           text:
-                                              " x ${state.orderList[index].qty}",
+                                              " x ${state.cartList[index].qty}",
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyLarge),
@@ -90,7 +90,7 @@ class _CartScreenState extends State<CartScreen> {
                                 try {
                                   BlocProvider.of<OrderCubitCubit>(context)
                                       .deleteCartItems(
-                                          state.orderList[index].cartId);
+                                          state.cartList[index].cartId);
 
                                   BlocProvider.of<OrderCubitCubit>(context)
                                       .getCart();

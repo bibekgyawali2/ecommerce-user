@@ -1,4 +1,6 @@
+import 'package:ecommerceuser/cubits/address_cubit/address_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ShippingAddressDialog extends StatefulWidget {
   const ShippingAddressDialog({super.key});
@@ -83,15 +85,16 @@ class _ShippingAddressDialogState extends State<ShippingAddressDialog> {
         ),
         ElevatedButton(
           onPressed: () {
-            // Save the entered address details
-            String country = countryController.text;
-            String state = stateController.text;
-            String city = cityController.text;
-            String postalCode = postalCodeController.text;
-
-            // Perform any necessary actions with the entered address
-
-            Navigator.of(context).pop();
+            BlocProvider.of<AddressCubit>(context).addAddress(
+              city: cityController.text,
+              country: countryController.text,
+              phone: phonenumber.text,
+              other: otherdiscription.text,
+              postalcode: postalCodeController.text,
+              province: stateController.text,
+              street: street.text,
+            );
+            Navigator.pop(context);
           },
           child: const Text('Save'),
         ),
