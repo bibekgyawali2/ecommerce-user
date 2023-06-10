@@ -9,6 +9,7 @@ part 'order_cubit_state.dart';
 class OrderCubitCubit extends Cubit<OrderCubitState> {
   OrderCubitCubit() : super(OrderCubitInitial());
 
+//add to cart
   addtoCart({title, img, sellername, qty, tprice}) async {
     emit(OrderCubitLoading());
     final DocumentReference cartDocRef =
@@ -22,7 +23,9 @@ class OrderCubitCubit extends Cubit<OrderCubitState> {
       "added_by": currentUser!.uid,
       "cartId": cartDocRef.id,
     });
-    emit(OrderCubitSuccess());
+    emit(
+      OrderCubitSuccess(),
+    );
   }
 
   //get order of current user

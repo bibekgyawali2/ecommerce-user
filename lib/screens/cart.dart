@@ -128,8 +128,10 @@ class _CartScreenState extends State<CartScreen> {
               child: CircularProgressIndicator(),
             ),
           );
-        } else {
+        } else if (state is OrderCubitFailure) {
           return const Text('error');
+        } else {
+          return const Text('Something Went Wrong');
         }
       },
     );
