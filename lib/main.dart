@@ -1,10 +1,11 @@
 import 'package:ecommerceuser/cubits/address_cubit/address_cubit.dart';
 import 'package:ecommerceuser/cubits/products_cubit/products_cubit.dart';
-import 'package:ecommerceuser/screens/address.dart';
+import 'package:ecommerceuser/screens/bottomnavbar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubits/cart_cubit/order_cubit_cubit.dart';
+import 'cubits/order_cubit/order_cubit.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -30,6 +31,9 @@ void main() async {
         BlocProvider(
           create: (context) => AddressCubit()..getAddress(),
         ),
+         BlocProvider(
+          create: (context) => OrderCubit(),
+        ),
       ],
       child: const MyApp(),
     ),
@@ -47,7 +51,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light(
         useMaterial3: true,
       ),
-      home: const AddAddress(),
+      home: const MyHomePage(),
     );
   }
 }

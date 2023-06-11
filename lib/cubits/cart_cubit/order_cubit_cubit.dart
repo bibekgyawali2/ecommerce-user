@@ -10,7 +10,7 @@ class OrderCubitCubit extends Cubit<OrderCubitState> {
   OrderCubitCubit() : super(OrderCubitInitial());
 
 //add to cart
-  addtoCart({title, img, sellername, qty, tprice}) async {
+  addtoCart({title, img, sellername, qty, tprice, productId}) async {
     emit(OrderCubitLoading());
     final DocumentReference cartDocRef =
         firestore.collection(cartCollections).doc();
@@ -22,13 +22,14 @@ class OrderCubitCubit extends Cubit<OrderCubitState> {
       "tprice": tprice,
       "added_by": currentUser!.uid,
       "cartId": cartDocRef.id,
+      "productId": productId,
     });
     emit(
       OrderCubitSuccess(),
     );
   }
 
-  //get order of current user
+  //get cart of current user
   Future<void> getCart() async {
     emit(OrderCubitLoading());
     try {

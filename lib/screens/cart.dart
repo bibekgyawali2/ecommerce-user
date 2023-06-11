@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../cubits/cart_cubit/order_cubit_cubit.dart';
+import 'address.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -17,6 +18,20 @@ class _CartScreenState extends State<CartScreen> {
       builder: (context, state) {
         if (state is OrderFetched) {
           return Scaffold(
+            bottomNavigationBar: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  fixedSize: const Size(double.infinity, 55),
+                  shape: const BeveledRectangleBorder()),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>  AddAddress(cartModal: state.cartList),
+                  ),
+                );
+              },
+              child: const Text('Place Order'),
+            ),
             body: SafeArea(
               child: Padding(
                 padding: const EdgeInsets.all(18.0),

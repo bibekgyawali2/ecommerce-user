@@ -1,10 +1,13 @@
 import 'package:ecommerceuser/cubits/address_cubit/address_cubit.dart';
+import 'package:ecommerceuser/cubits/order_cubit/order_cubit.dart';
+import 'package:ecommerceuser/modals/cart_modal.dart';
 import 'package:ecommerceuser/widgets/shipping_address_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddAddress extends StatefulWidget {
-  const AddAddress({super.key});
+  final List<CartModal> cartModal;
+  const AddAddress({super.key, required this.cartModal});
 
   @override
   State<AddAddress> createState() => _AddAddressState();
@@ -32,7 +35,11 @@ class _AddAddressState extends State<AddAddress> {
                 padding: const EdgeInsets.all(12),
                 disabledBackgroundColor: Colors.grey,
                 shape: const BeveledRectangleBorder()),
-            onPressed: () {},
+            onPressed: () {
+              BlocProvider.of<OrderCubit>(context).addOrder(
+                listCartModel: widget.cartModal,
+              );
+            },
             child: const Text('Place Order'),
           ),
         ),

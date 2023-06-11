@@ -9,3 +9,4 @@ const usersCollections = "users";
 const productsCollections = 'Products';
 const cartCollections = 'Cart';
 const addressCollections = 'Address';
+const orderCollections = 'Order';
