@@ -47,6 +47,7 @@ class OrderCubitCubit extends Cubit<OrderCubitState> {
           sellername: data['sellername'],
           title: data['title'],
           tprice: data['tprice'],
+          productId: data['productId'],
           cartId: document.id,
         );
       }).toList();

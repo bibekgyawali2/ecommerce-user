@@ -8,7 +8,7 @@ class Product {
   String? pRating;
   String? pSeller;
   String? pSubcatagory;
-
+  String? productId;
   Product(
       {this.pCatagory,
       this.pDesc,
@@ -18,7 +18,8 @@ class Product {
       this.pQuantity,
       this.pRating,
       this.pSeller,
-      this.pSubcatagory});
+      this.pSubcatagory,
+      this.productId});
 
   Product.fromJson(Map<String, dynamic> json) {
     pCatagory = json['p_catagory'];
@@ -30,6 +31,7 @@ class Product {
     pRating = json['p_rating'];
     pSeller = json['p_seller'];
     pSubcatagory = json['p_subcatagory'];
+    productId = json['productId'];
   }
 
   Map<String, dynamic> toJson() {
@@ -43,6 +45,7 @@ class Product {
     data['p_rating'] = pRating;
     data['p_seller'] = pSeller;
     data['p_subcatagory'] = pSubcatagory;
+    data['productId'] = productId;
     return data;
   }
 }

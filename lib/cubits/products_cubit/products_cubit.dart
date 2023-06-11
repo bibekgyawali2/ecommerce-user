@@ -40,6 +40,7 @@ class ProductsCubit extends Cubit<ProductsState> {
           pImg: data['p_img'],
           pRating: data['p_rating'],
           pSeller: data['p_seller'],
+          productId: data['productId'],
         );
       }).toList();
 

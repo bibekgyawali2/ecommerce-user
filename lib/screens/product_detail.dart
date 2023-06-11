@@ -57,6 +57,7 @@ class _ProductDetailState extends State<ProductDetail> {
                   qty: widget.product.pQuantity,
                   tprice: widget.product.pPrice,
                   sellername: widget.product.pSeller,
+                  productId: widget.product.productId,
                 );
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(

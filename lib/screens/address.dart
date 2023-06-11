@@ -14,6 +14,7 @@ class AddAddress extends StatefulWidget {
 }
 
 class _AddAddressState extends State<AddAddress> {
+  int? address;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +61,7 @@ class _AddAddressState extends State<AddAddress> {
                   },
                   builder: (context, state) {
                     if (state is AddressFetched) {
+                      address = state.addressList.length;
                       return ListView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
@@ -130,7 +132,7 @@ class _AddAddressState extends State<AddAddress> {
                   },
                 ),
                 Visibility(
-                  visible: true,
+                  visible: address == 0 ? true : false,
                   child: TextButton(
                     onPressed: () {
                       showDialog(

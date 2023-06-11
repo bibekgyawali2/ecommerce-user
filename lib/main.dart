@@ -31,7 +31,7 @@ void main() async {
         BlocProvider(
           create: (context) => AddressCubit()..getAddress(),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (context) => OrderCubit(),
         ),
       ],
