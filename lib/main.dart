@@ -1,6 +1,8 @@
 import 'package:ecommerceuser/cubits/address_cubit/address_cubit.dart';
+import 'package:ecommerceuser/cubits/auth_cubit/auth_cubit.dart';
 import 'package:ecommerceuser/cubits/products_cubit/products_cubit.dart';
 import 'package:ecommerceuser/screens/bottomnavbar.dart';
+import 'package:ecommerceuser/screens/login.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +18,9 @@ void main() async {
   runApp(
     MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) => AuthCubit(),
+        ),
         BlocProvider(
           create: (context) => ProductsCubit()..fetchData(),
         ),
@@ -47,11 +52,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData.light(
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      home: const LoginScreen(),
     );
   }
 }

@@ -30,6 +30,19 @@ class AuthController {
     return userCredential;
   }
 
+  //google sign in
+  Future<String> googleSignIn() async {
+    String res;
+    try {
+      await FirebaseAuth.instance.signInWithPopup(GoogleAuthProvider());
+      return res = 'success';
+    } on FirebaseAuthException catch (ex) {
+      return "${ex.code}: ${ex.message}";
+    } on UnimplementedError catch (ex) {
+      return res = ex.message.toString();
+    }
+  }
+
   //store data
   storeUserData({name, email, password}) async {
     DocumentReference store =

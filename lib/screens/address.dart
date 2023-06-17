@@ -132,7 +132,7 @@ class _AddAddressState extends State<AddAddress> {
                   },
                 ),
                 Visibility(
-                  visible: address == 0 ? true : false,
+                  visible: true,
                   child: TextButton(
                     onPressed: () {
                       showDialog(

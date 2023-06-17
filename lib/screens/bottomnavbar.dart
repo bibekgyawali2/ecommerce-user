@@ -1,4 +1,5 @@
 import 'package:ecommerceuser/home.dart';
+import 'package:ecommerceuser/screens/profile.dart';
 import 'package:flutter/material.dart';
 
 import 'cart.dart';
@@ -21,12 +22,8 @@ class _MyHomePageState extends State<MyHomePage> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     CartScreen(),
-    Text(
-      'Index 2: School',
-    ),
-    Text(
-      'Index 3: School',
-    ),
+    Text('Index 2: School'),
+    UserProfilePage()
   ];
   @override
   Widget build(BuildContext context) {
