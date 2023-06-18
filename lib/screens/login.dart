@@ -1,10 +1,8 @@
 import 'package:ecommerceuser/controller/auth_controller.dart';
-import 'package:ecommerceuser/cubits/auth_cubit/auth_cubit.dart';
 import 'package:ecommerceuser/widgets/button.dart';
 import 'package:ecommerceuser/widgets/textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../constants/firebase_constants.dart';
 import 'bottomnavbar.dart';
@@ -109,8 +107,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     52,
                   ),
                 ),
-                onPressed: () {
-                  BlocProvider.of<AuthCubit>(context).googlelogin();
+                onPressed: () async {
+                  await controller.signInWithGoogle().then((value) {
+                    if (value != null) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MyHomePage(),
+                        ),
+                      );
+                    }
+                  });
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

@@ -27,6 +27,7 @@ class _ShippingAddressDialogState extends State<ShippingAddressDialog> {
     super.dispose();
   }
 
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -37,42 +38,87 @@ class _ShippingAddressDialogState extends State<ShippingAddressDialog> {
       //contentPadding:
       //    const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
       title: const Text('Shipping Address'),
-      content: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.8,
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextFormField(
-                controller: countryController,
-                decoration: const InputDecoration(labelText: 'Country'),
-              ),
-              TextFormField(
-                controller: stateController,
-                decoration: const InputDecoration(labelText: 'State'),
-              ),
-              TextFormField(
-                controller: cityController,
-                decoration: const InputDecoration(labelText: 'City'),
-              ),
-              TextFormField(
-                controller: postalCodeController,
-                decoration: const InputDecoration(labelText: 'Postal Code'),
-              ),
-              TextFormField(
-                controller: phonenumber,
-                decoration: const InputDecoration(labelText: 'Phone Number'),
-              ),
-              TextFormField(
-                controller: street,
-                decoration: const InputDecoration(labelText: 'Street Name'),
-              ),
-              TextFormField(
-                controller: otherdiscription,
-                decoration:
-                    const InputDecoration(labelText: 'Other Description'),
-              ),
-            ],
+      content: Form(
+        key: formKey,
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.8,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
+                  controller: countryController,
+                  decoration: const InputDecoration(labelText: 'Country'),
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
+                  controller: stateController,
+                  decoration: const InputDecoration(labelText: 'State'),
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
+                  controller: cityController,
+                  decoration: const InputDecoration(labelText: 'City'),
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
+                  controller: postalCodeController,
+                  decoration: const InputDecoration(labelText: 'Postal Code'),
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
+                  controller: phonenumber,
+                  decoration: const InputDecoration(labelText: 'Phone Number'),
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
+                  controller: street,
+                  decoration: const InputDecoration(labelText: 'Street Name'),
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
+                  controller: otherdiscription,
+                  decoration:
+                      const InputDecoration(labelText: 'Other Description'),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -85,16 +131,18 @@ class _ShippingAddressDialogState extends State<ShippingAddressDialog> {
         ),
         ElevatedButton(
           onPressed: () {
-            BlocProvider.of<AddressCubit>(context).addAddress(
-              city: cityController.text,
-              country: countryController.text,
-              phone: phonenumber.text,
-              other: otherdiscription.text,
-              postalcode: postalCodeController.text,
-              province: stateController.text,
-              street: street.text,
-            );
-            Navigator.pop(context);
+            if (formKey.currentState!.validate()) {
+              BlocProvider.of<AddressCubit>(context).addAddress(
+                city: cityController.text,
+                country: countryController.text,
+                phone: phonenumber.text,
+                other: otherdiscription.text,
+                postalcode: postalCodeController.text,
+                province: stateController.text,
+                street: street.text,
+              );
+              Navigator.pop(context);
+            }
           },
           child: const Text('Save'),
         ),

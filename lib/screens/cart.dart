@@ -14,7 +14,14 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OrderCubitCubit, OrderCubitState>(
+    return BlocConsumer<OrderCubitCubit, OrderCubitState>(
+      listener: (context, state) {
+        if (state is OrderCubitSuccess) {
+          setState(() {
+            BlocProvider.of<OrderCubitCubit>(context).getCart();
+          });
+        }
+      },
       builder: (context, state) {
         if (state is OrderFetched) {
           return Scaffold(
@@ -26,7 +33,7 @@ class _CartScreenState extends State<CartScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>  AddAddress(cartModal: state.cartList),
+                    builder: (context) => AddAddress(cartModal: state.cartList),
                   ),
                 );
               },

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerceuser/constants/firebase_constants.dart';
@@ -24,13 +26,11 @@ class OrderCubitCubit extends Cubit<OrderCubitState> {
       "cartId": cartDocRef.id,
       "productId": productId,
     });
-    emit(
-      OrderCubitSuccess(),
-    );
+    getCart();
   }
 
   //get cart of current user
-  Future<void> getCart() async {
+  FutureOr<void> getCart() async {
     emit(OrderCubitLoading());
     try {
       QuerySnapshot snapshot = await firestore
