@@ -20,11 +20,12 @@ class OrderCubitCubit extends Cubit<OrderCubitState> {
       'title': title,
       'img': img,
       "sellername": sellername,
-      "qty": qty,
+      "qty": 1,
       "tprice": tprice,
       "added_by": currentUser!.uid,
       "cartId": cartDocRef.id,
       "productId": productId,
+      "created_at": DateTime.now(),
     });
     getCart();
   }

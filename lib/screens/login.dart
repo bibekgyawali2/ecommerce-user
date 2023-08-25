@@ -15,8 +15,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController =
+      TextEditingController(text: 'gyawali.bibek03@gmail.com');
+  TextEditingController passwordController =
+      TextEditingController(text: '12345678');
   var controller = AuthController();
   changeScreen() {
     auth.authStateChanges().listen((User? user) {

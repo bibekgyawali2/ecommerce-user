@@ -54,7 +54,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 BlocProvider.of<OrderCubitCubit>(context).addtoCart(
                   title: widget.product.pName,
                   img: widget.product.pImg,
-                  qty: widget.product.pQuantity,
+                  qty: 1,
                   tprice: widget.product.pPrice,
                   sellername: widget.product.pSeller,
                   productId: widget.product.productId,

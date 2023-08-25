@@ -1,7 +1,8 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:ecommerceuser/cubits/address_cubit/address_cubit.dart';
 import 'package:ecommerceuser/cubits/auth_cubit/auth_cubit.dart';
 import 'package:ecommerceuser/cubits/products_cubit/products_cubit.dart';
-import 'package:ecommerceuser/screens/setting.dart';
+import 'package:ecommerceuser/screens/login.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,7 +37,7 @@ void main() async {
           create: (context) => AddressCubit()..getAddress(),
         ),
         BlocProvider(
-          create: (context) => OrderCubit(),
+          create: (context) => OrderCubit()..getOrder(),
         ),
       ],
       child: const MyApp(),
@@ -46,8 +47,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -56,7 +55,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light(
         useMaterial3: true,
       ),
-      home: const SettingsPage(),
+      home: const LoginScreen(),
     );
   }
 }

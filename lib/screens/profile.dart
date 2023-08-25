@@ -24,8 +24,8 @@ class UserProfilePage extends StatelessWidget {
                 const CircleAvatar(
                   radius: 50.0,
                   // Display user's profile picture here
-                  backgroundImage:
-                      NetworkImage('https://example.com/profile.jpg'),
+                  //     backgroundImage:
+                  //       NetworkImage('https://example.com/profile.jpg'),
                 ),
                 const SizedBox(height: 16.0),
                 const Text(

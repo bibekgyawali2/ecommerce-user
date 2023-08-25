@@ -27,7 +27,7 @@ class _AddAddressState extends State<AddAddress> {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(left: 0, right: 0),
+        padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
         child: SizedBox(
           height: 55,
           child: ElevatedButton(
@@ -39,6 +39,13 @@ class _AddAddressState extends State<AddAddress> {
             onPressed: () {
               BlocProvider.of<OrderCubit>(context).addOrder(
                 listCartModel: widget.cartModal,
+                city: '',
+                country: '',
+                other: '',
+                phone: '',
+                postalcode: '',
+                province: '',
+                street: '',
               );
             },
             child: const Text('Place Order'),

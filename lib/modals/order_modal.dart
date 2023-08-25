@@ -1,16 +1,22 @@
-class Order {
+class OrderModal {
   final String orderId;
   final String userId;
   final List<Map<String, dynamic>> products;
-  final double totalPrice;
-  final String status;
+  final int totalPrice;
+  //final String status;
+  final String province;
+  final String street;
+  final String phone;
 
-  Order({
+  OrderModal({
     required this.orderId,
     required this.userId,
     required this.products,
     required this.totalPrice,
-    required this.status,
+    // required this.status,
+    required this.phone,
+    required this.province,
+    required this.street,
   });
 
   Map<String, dynamic> toMap() {
@@ -19,7 +25,7 @@ class Order {
       'userId': userId,
       'products': products,
       'totalPrice': totalPrice,
-      'status': status,
+      //'status': status,
     };
   }
 }
